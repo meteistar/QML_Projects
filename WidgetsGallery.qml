@@ -17,6 +17,7 @@ ApplicationWindow {
         ListElement{url: "sheets/ListViewSheet.qml"; text:"List View"}
         ListElement{url: "sheets/PathViewSheet.qml"; text:"Path View"}
         ListElement{url: "sheets/WindmillSheet.qml"; text:"Windmill Animation"}
+        ListElement{url: "sheets/ParticlesSheet.qml"; text:"Particles"}
     }
 
     header: Item{
