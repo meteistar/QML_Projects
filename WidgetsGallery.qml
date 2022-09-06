@@ -15,6 +15,7 @@ ApplicationWindow {
         ListElement{url: "sheets/WidgetsSheet.qml"; text:"Basic Widgets"}
         ListElement{url: "sheets/GridViewSheet.qml"; text:"Grid View"}
         ListElement{url: "sheets/ListViewSheet.qml"; text:"List View"}
+        ListElement{url: "sheets/PathViewSheet.qml"; text:"Path View"}
     }
 
     header: Item{
