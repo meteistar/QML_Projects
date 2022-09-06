@@ -31,6 +31,6 @@ Item {
     MouseArea{
         id: mouse
         anchors.fill: parent
-        onClicked: root.click();
+        onClicked: root.clicked();
     }
 }
