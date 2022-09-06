@@ -1,58 +1,66 @@
-import QtQuick 2.0
+import QtQuick 2.11
 
 BaseSheet {
     id: root
     clip: true
 
-    PathView{
+    PathView {
         anchors.fill: parent
-        model: 100
+        model: Model { }
         currentIndex: 0
-        path: Path{
-            startX: 0 ; startY: 250
-            PathAttribute{ name:"iconScale"; value: 0.5}
-            PathAttribute{ name:"iconz"; value: 0}
-            PathAttribute{ name:"iconx"; value: 0}
-            PathAttribute{ name:"icony"; value: 1}
-            PathAttribute{ name:"angleMove"; value: 40}
-            PathQuad{ x: parent.width / 2; y: 250; controlX: 162.5; controlY: 225}
-            PathAttribute{ name:"iconScale"; value: 1.5}
-            PathAttribute{ name:"iconz"; value: 20}
-            PathAttribute{ name:"iconx"; value: 0.5}
-            PathAttribute{ name:"icony"; value: 0.5}
-            PathAttribute{ name:"angleMove"; value: 0}
-            PathQuad{ x: parent.width; y: 250; controlX: 225; controlY: 225}
-            PathAttribute{ name:"iconScale"; value: 0.5}
-            PathAttribute{ name:"iconz"; value: 0}
-            PathAttribute{ name:"iconx"; value: 0}
-            PathAttribute{ name:"icony"; value: 1}
-            PathAttribute{ name:"angleMove"; value: -40}
+
+        path: Path {
+            startX: 0; startY: 250
+            PathAttribute { name: "iconScale"; value: 0.5 }
+            PathAttribute { name: "iconz"; value: 0 }
+            PathAttribute { name: "iconx"; value: 0 }
+            PathAttribute { name: "icony"; value: 1 }
+            PathAttribute { name: "angleMove"; value: 40 }
+            PathQuad { x: parent ? (parent.width / 2) : 0; y: 250; controlX: 162.5; controlY: 225  }
+            PathAttribute { name: "iconScale"; value: 1.5 }
+            PathAttribute { name: "iconz"; value: 20 }
+            PathAttribute { name: "iconx"; value: 0.5 }
+            PathAttribute { name: "icony"; value: 0.5 }
+            PathAttribute { name: "angleMove"; value: 0 }
+            PathQuad { x: parent ? parent.width : 0; y: 250; controlX: 225; controlY:225 }
+            PathAttribute { name: "iconScale"; value: 0.5 }
+            PathAttribute { name: "iconz"; value: 0 }
+            PathAttribute { name: "iconx"; value: 0 }
+            PathAttribute { name: "icony"; value: 1 }
+            PathAttribute { name: "angleMove"; value: -40 }
         }
 
-        delegate: Rectangle{
+        delegate: Rectangle {
             width: 100
             height: 100
             z: PathView.iconz
             scale: PathView.iconScale
-
-            color: Qt.rgba(Math.random(),Math.random(),Math.random(),1)
+            color: Qt.rgba(Math.random(), Math.random(),Math.random(),1);
             border.color: "black"
-            property double iconx: PathView.iconx
+            property double  iconx: PathView.iconx
             property double icony: PathView.icony
             property double angleMove: PathView.angleMove
-            transform: Rotation{ axis {x: iconx; y: icony; z: 0} angle: angleMove }
-
-            Rectangle{
+            transform:
+                Rotation { axis { x: iconx; y: icony; z: 0 } angle: angleMove }
+            Rectangle {
                 id: dimming
                 width: parent.width
                 height: 40
                 anchors.bottom: parent.bottom
+                color: "black"
                 opacity: 0.2
             }
-
-            Text{
+            Column {
                 anchors.centerIn: dimming
-                text: index
+                Text {
+                    text: model.fruit
+                }
+                Text {
+                    width: parent.width
+                    font.pixelSize: 8
+                    horizontalAlignment: Text.AlignHCenter
+                    text: model.price
+                }
             }
         }
     }
