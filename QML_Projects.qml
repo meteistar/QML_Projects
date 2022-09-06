@@ -30,10 +30,18 @@ Window {
     }
 
     MyRadioButton{
+        id: myRadioButton
         width: 150
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: textEdit.bottom
         anchors.topMargin: 30
         text: "Radio Button"
+    }
+
+    MyCheckBox{
+        id: myCheckBox
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: myRadioButton.bottom
+        anchors.topMargin: 30
     }
 }
