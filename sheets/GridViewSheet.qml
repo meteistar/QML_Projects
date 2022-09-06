@@ -13,7 +13,7 @@ BaseSheet {
         cellHeight: 120
         model: 100
         delegate: Rectangle{
-            width: GridView.cellWidth
+            width: gridView.cellWidth
             height: gridView.cellHeight
             color: Qt.rgba(Math.random(),Math.random(),Math.random(),1)
             border.color: "black"

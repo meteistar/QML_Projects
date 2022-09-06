@@ -39,7 +39,7 @@ ApplicationWindow {
 
         Text{
             anchors.centerIn: parent
-            text: "Page Title"
+            text: listModel.get(listView.currentIndex).text
         }
     }
 
