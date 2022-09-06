@@ -53,4 +53,12 @@ Window {
         text: "Switch me!"
 
     }
+
+    MyButton{
+        id: myButton
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: mySwitch.bottom
+        anchors.topMargin: 30
+        text: "Click me!"
+    }
 }
