@@ -44,4 +44,13 @@ Window {
         anchors.top: myRadioButton.bottom
         anchors.topMargin: 30
     }
+
+    MySwitch{
+        id: mySwitch
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: myCheckBox.bottom
+        anchors.topMargin: 30
+        text: "Switch me!"
+
+    }
 }
