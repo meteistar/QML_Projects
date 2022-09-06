@@ -1,11 +1,11 @@
 import QtQuick 2.0
-
-import controls 1.0
+import QtQuick.Controls 2.15
+//import controls 1.0
 
 BaseSheet {
     id: root
 
-    MyRadioButton{
+    RadioButton{
         id: myRadioButton
         width: 150
         anchors.horizontalCenter: parent.horizontalCenter
@@ -14,14 +14,14 @@ BaseSheet {
         text: "Radio Button"
     }
 
-    MyCheckBox{
+    CheckBox{
         id: myCheckBox
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: myRadioButton.bottom
         anchors.topMargin: 30
     }
 
-    MySwitch{
+    Switch{
         id: mySwitch
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: myCheckBox.bottom
@@ -30,7 +30,7 @@ BaseSheet {
 
     }
 
-    MyButton{
+    Button{
         id: myButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: mySwitch.bottom
