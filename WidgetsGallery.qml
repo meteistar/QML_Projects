@@ -12,8 +12,8 @@ ApplicationWindow {
 
     ListModel{
         id: listModel
-        ListElement{url: "sheets/"; text:"Basic Widgets"}
-        ListElement{url: "one"; text:"Advanced Widgets"}
+        ListElement{url: "sheets/WidgetsSheet.qml"; text:"Basic Widgets"}
+        ListElement{url: "sheets/GridViewSheet.qml"; text:"Grid View"}
     }
 
     header: Item{
@@ -82,6 +82,7 @@ ApplicationWindow {
                         anchors.fill: parent
                         onClicked: {
                             listView.currentIndex = index;
+                            stackView.push(Qt.resolvedUrl(model.url));
                         }
                     }
                 }
@@ -89,6 +90,7 @@ ApplicationWindow {
         }
 
         StackView{
+            id: stackView
             width: parent.width - listView.width
             height: parent.height
             anchors.right: parent.right
@@ -96,57 +98,5 @@ ApplicationWindow {
         }
     }
 
-//    MouseArea{
-//        anchors.fill: parent
-//        onClicked: console.log("Clicked on background: Text: ", textEdit.text)
-//    }
 
-    TextEdit{
-        id: textEdit
-        width: 150
-        height: 40
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        anchors.topMargin: 30
-        verticalAlignment: Text.AlignVCenter
-        Rectangle{
-            anchors.fill: parent
-            color: "transparent"
-            border.width: 1
-            border.color: "black"
-        }
-    }
-
-    MyRadioButton{
-        id: myRadioButton
-        width: 150
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: textEdit.bottom
-        anchors.topMargin: 30
-        text: "Radio Button"
-    }
-
-    MyCheckBox{
-        id: myCheckBox
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: myRadioButton.bottom
-        anchors.topMargin: 30
-    }
-
-    MySwitch{
-        id: mySwitch
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: myCheckBox.bottom
-        anchors.topMargin: 30
-        text: "Switch me!"
-
-    }
-
-    MyButton{
-        id: myButton
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: mySwitch.bottom
-        anchors.topMargin: 30
-        text: "Click me!"
-    }
 }
