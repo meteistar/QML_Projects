@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import "imports/controls"
 
 Window {
     width: 640
@@ -9,14 +10,16 @@ Window {
 
     MouseArea{
         anchors.fill: parent
-        onClicked: console.log("Clicked on background: Text: ", textEdit.text, "devam ediyourum")
+        onClicked: console.log("Clicked on background: Text: ", textEdit.text)
     }
 
     TextEdit{
         id: textEdit
         width: 150
         height: 40
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: 30
         verticalAlignment: Text.AlignVCenter
         Rectangle{
             anchors.fill: parent
@@ -24,5 +27,13 @@ Window {
             border.width: 1
             border.color: "black"
         }
+    }
+
+    MyRadioButton{
+        width: 150
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: textEdit.bottom
+        anchors.topMargin: 30
+        text: "Radio Button"
     }
 }
