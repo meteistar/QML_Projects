@@ -154,5 +154,28 @@ BaseSheet {
                 }
             }
         }
+
+        ToolButton{
+            width: 120
+            height: 40
+            text: "Tool Button"
+        }
+
+        Slider{
+            width: 170
+            height: 20
+        }
+
+        Label{
+            text: "I am a label"
+        }
+
+        BusyIndicator{
+
+        }
+
+        Dial{
+
+        }
     }
 }
