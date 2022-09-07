@@ -20,7 +20,7 @@ T.CheckBox {
         width: (parent.width - 20)
         height: (parent.height - 20)
         anchors.centerIn: parent
-        source:  Style.image("check.png")
+        source:  Style.image("check")
         visible: root.checked
         ColorOverlay {
             anchors.fill: buttonImage
