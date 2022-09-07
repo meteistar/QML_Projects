@@ -18,38 +18,7 @@ BaseSheet {
             height: 50
             text: "Radio Button"
 
-            background: Rectangle {
-                id: fillRect
-                width: parent.height
-                height: width
-                radius: width / 2
-                color: "transparent"
-                border.color: "#A8A8A8"
-            }
 
-            indicator: Rectangle {
-                width: (parent.height - 10)
-                height: (parent.height - 10)
-                anchors.centerIn: fillRect
-                radius: width / 2
-                visible: myRadioButton.checked
-                color: "#00D1A9"
-            }
-
-            contentItem: Item{
-                width: (parent.width - fillRect.width - 10)
-                height: (parent.height)
-                anchors.left: fillRect.right
-                anchors.leftMargin: 10
-
-                Text {
-                    id: textLabel
-                    text: myRadioButton.text
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: 14
-                    color: "#A8A8A8"
-                }
-            }
         }
 
         CheckBox{
@@ -57,26 +26,7 @@ BaseSheet {
             width: 50
             height: 50
 
-            background: Rectangle {
-                anchors.fill: parent
-                color: "transparent"
-                border.color: "#A8A8A8"
-            }
 
-            indicator: Image {
-                id: buttonImage
-                width: (parent.width - 20)
-                height: (parent.height - 20)
-                anchors.centerIn: parent
-                source:  "../assets/check.png"
-                visible: myCheckBox.checked
-                ColorOverlay {
-                    anchors.fill: buttonImage
-                    source: buttonImage
-                    color: "#00D1A9"
-                    visible: myCheckBox.checked
-                }
-            }
         }
 
         Switch{
