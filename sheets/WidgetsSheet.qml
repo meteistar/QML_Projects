@@ -8,11 +8,42 @@ BaseSheet {
 
     RadioButton{
         id: myRadioButton
-        width: 150
+        width: 120
+        height: 50
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 30
         text: "Radio Button"
+        background: Rectangle {
+            id: fillRect
+            width: parent.height
+            height: width
+            radius: width / 2
+            color: "transparent"
+            border.color: "#A8A8A8"
+        }
+        indicator: Rectangle {
+            width: (parent.height - 10)
+            height: (parent.height - 10)
+            anchors.centerIn: fillRect
+            radius: width / 2
+            visible: myRadioButton.checked
+            color: "#00D1A9"
+        }
+        contentItem: Item{
+            width: (parent.width - fillRect.width - 10)
+            height: (parent.height)
+            anchors.left: fillRect.right
+            anchors.leftMargin: 10
+
+            Text {
+                id: textLabel
+                text: myRadioButton.text
+                anchors.verticalCenter: parent.verticalCenter
+                font.pixelSize: 14
+                color: "#A8A8A8"
+            }
+        }
     }
 
     CheckBox{
@@ -83,7 +114,7 @@ BaseSheet {
         contentItem: Item {
             anchors.fill: parent
             Text {
-                id: textLabel
+                id: buttonLabel
                 font.pixelSize: 14
                 color: "#FFFFFF"
                 anchors.centerIn: parent
