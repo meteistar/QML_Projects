@@ -38,7 +38,7 @@ BaseSheet {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: mySwitch.bottom
         anchors.topMargin: 30
-        text: "Click me!"
+        text: "Click me !"
         background: Item{
             anchors.fill: parent
 
