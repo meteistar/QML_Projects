@@ -17,9 +17,31 @@ BaseSheet {
 
     CheckBox{
         id: myCheckBox
+        width: 50
+        height: 50
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: myRadioButton.bottom
         anchors.topMargin: 30
+        background:     Rectangle {
+            anchors.fill: parent
+            color: "transparent"
+            border.color: "#A8A8A8"
+
+        }
+        indicator: Image {
+            id: buttonImage
+            width: (parent.width - 20)
+            height: (parent.height - 20)
+            anchors.centerIn: parent
+            source:  "../assets/check.png"
+            visible: myCheckBox.checked
+            ColorOverlay {
+                anchors.fill: buttonImage
+                source: buttonImage
+                color: "#00D1A9"
+                visible: myCheckBox.checked
+            }
+        }
     }
 
     Switch{
