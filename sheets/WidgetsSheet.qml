@@ -124,35 +124,6 @@ BaseSheet {
             height: 40
             text: "Click me !"
 
-            background: Item{
-                anchors.fill: parent
-
-                DropShadow{
-                    anchors.fill: backgroundFill
-                    verticalOffset: 3
-                    radius: 8.0
-                    samples: 17
-                    color: "#80000000"
-                    source: backgroundFill
-                }
-
-                Rectangle {
-                    id: backgroundFill
-                    anchors.fill: parent
-                    radius: 30
-                    color: myButton.pressed ? "#A8A8A8" : "#00D1A9"
-                }
-            }
-            contentItem: Item {
-                anchors.fill: parent
-                Text {
-                    id: buttonLabel
-                    font.pixelSize: 14
-                    color: "#FFFFFF"
-                    anchors.centerIn: parent
-                    text: myButton.text
-                }
-            }
         }
 
         ToolButton{
