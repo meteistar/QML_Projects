@@ -5,6 +5,8 @@ import utils 1.0
 
 T.Slider {
     id: root
+    implicitWidth: 170
+    implicitHeight: 20
 
     background: Rectangle{
         width: parent.width
