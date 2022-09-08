@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 
 import controls 1.0
+import utils 1.0
 
 ApplicationWindow {
     width: 595
@@ -25,9 +26,9 @@ ApplicationWindow {
         height: 30
 
         Rectangle{
-            id: fillColorRect
-            anchors.fill: parent
-            color: "white"
+            width: menuArea.width
+            height: parent.height//menuArea.height
+            color: Style.mainColor
         }
 
         DropShadow{
@@ -39,7 +40,14 @@ ApplicationWindow {
             source: fillColorRect
         }
 
-        Text{
+        Rectangle{
+            id: fillColorRect
+            width: parent.width - menuArea.width
+            height:  parent.height
+            anchors.right: parent.right
+            color: "white"
+        }
+        Label{
             anchors.centerIn: parent
             text: listModel.get(listView.currentIndex).text
         }
@@ -49,9 +57,10 @@ ApplicationWindow {
         anchors.fill: parent
 
         Rectangle{
+            id: menuArea
             width: 185
             height: parent.height
-            color: "#00D1A9"
+            color: Style.mainColor
 
             ListView{
                 id: listView
@@ -65,7 +74,7 @@ ApplicationWindow {
                     height: 47
                     Rectangle{
                         anchors.fill: parent
-                        color: "#D1DBE1"
+                        color: Style.bgColor
                         opacity: 0.6
                     }
                     Rectangle{
@@ -99,6 +108,42 @@ ApplicationWindow {
             height: parent.height
             anchors.right: parent.right
             initialItem: Qt.resolvedUrl("sheets/WidgetsSheet.qml")
+            popEnter: Transition {
+                PropertyAnimation{
+                    property: "opacity"
+                    from: 0
+                    to:1
+                    duration: 200
+                }
+
+            }
+            popExit: Transition {
+                PropertyAnimation{
+                    property: "opacity"
+                    from: 1
+                    to:0
+                    duration: 200
+                }
+
+            }
+            pushEnter: Transition {
+                PropertyAnimation{
+                    property: "opacity"
+                    from: 0
+                    to:1
+                    duration: 200
+                }
+
+            }
+            pushExit: Transition {
+                PropertyAnimation{
+                    property: "opacity"
+                    from: 0
+                    to:1
+                    duration: 200
+                }
+
+            }
         }
     }
 
