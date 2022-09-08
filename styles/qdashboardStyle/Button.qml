@@ -32,6 +32,7 @@ T.Button {
         anchors.fill: parent
         Label {
             id: buttonLabel
+            anchors.centerIn: parent
             color: Style.fontConstrastColor
             text: root.text
         }

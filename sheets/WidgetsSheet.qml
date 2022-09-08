@@ -35,37 +35,7 @@ BaseSheet {
             height: 30
             text: "Switch me!"
 
-            background: Rectangle {
-                id: background
-                width: parent.width / 3
-                height: parent.height
-                color: "transparent"
-                border.color: "#A8A8A8"
-                radius: width / 3
 
-            }
-            indicator: Rectangle {
-                id: indicator
-                width: background.width / 2
-                height: width
-                color: "#00D1A9"
-                radius: width / 2
-                x: mySwitch.checked ? (background.width - width) : 0
-                Behavior on x {
-                    NumberAnimation{properties: "x"; easing.type: Easing.InOutQuad; duration: 200}
-                }
-            }
-            contentItem: Item {
-                anchors.left: background.right
-                anchors.leftMargin: 10
-                Text {
-                    id: switchLabel
-                    text: mySwitch.text
-                    anchors.verticalCenter: parent.verticalCenter
-                    font.pixelSize: 14
-                    color: "#A8A8A8"
-                }
-            }
         }
 
         Button{
