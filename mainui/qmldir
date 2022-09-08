@@ -1,0 +1,10 @@
+DashboardAppContent 1.0 DashboardAppContent.qml
+Header 1.0 Header.qml
+MainContent 1.0 MainContent.qml
+NewReminderPopup 1.0 popups/NewReminderPopup.qml
+NewTaskPopup 1.0 popups/NewTaskPopup.qml
+NewOrReplyEmailPopup 1.0 popups/NewOrReplyEmailPopup.qml
+MainMenu 1.0 mainmenu/MainMenu.qml
+MainMenuList 1.0 mainmenu/MainMenuList.qml
+UserInfo 1.0 mainmenu/UserInfo.qml
+

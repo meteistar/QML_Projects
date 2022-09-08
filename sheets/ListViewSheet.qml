@@ -9,7 +9,7 @@ BaseSheet {
         width: 150
         height: 400
         anchors.centerIn: parent
-        model: Model { }
+        model: 100
         delegate: Item {
             width: parent.width
             height: 40
@@ -22,20 +22,11 @@ BaseSheet {
                 anchors.verticalCenter: parent.verticalCenter
                 color: Qt.rgba(Math.random(), Math.random(), Math.random(), 1)
             }
-            Column {
-                width: (parent.width - colorIcon.width - 30)
+            Text {
                 anchors.left: colorIcon.right
                 anchors.leftMargin: 20
                 anchors.verticalCenter: parent.verticalCenter
-                Text {
-                    width: parent.width
-                    elide: Text.ElideRight
-                    text: "Item: " + model.fruit
-                }
-                Text {
-                    font.pixelSize: 8
-                    text: model.price
-                }
+                text: "Item: " + index
             }
             Rectangle {
                 width: parent.width

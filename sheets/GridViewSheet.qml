@@ -11,7 +11,7 @@ BaseSheet {
         anchors.horizontalCenter: parent.horizontalCenter
         cellWidth: 120
         cellHeight: 120
-        model: Model {}
+        model: 100
         delegate: Rectangle {
             width: grid.cellWidth
             height: grid.cellHeight
@@ -25,17 +25,9 @@ BaseSheet {
                 color: "black"
                 opacity: 0.2
             }
-            Column {
+            Text {
                 anchors.centerIn: dimming
-                Text {
-                    text: model.fruit
-                }
-                Text {
-                    width: parent.width
-                    font.pixelSize: 8
-                    horizontalAlignment: Text.AlignHCenter
-                    text: model.price
-                }
+                text: index
             }
         }
     }

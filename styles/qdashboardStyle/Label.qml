@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.11
 import QtQuick.Templates 2.4 as T
 
 import utils 1.0

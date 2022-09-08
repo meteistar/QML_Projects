@@ -5,7 +5,7 @@ Item {
     width: 50
     height: 50
 
-    property alias text: textLabel.text // to reach this variable from outside
+    property alias text: textLabel.text
     property bool checked: false
 
     Rectangle {

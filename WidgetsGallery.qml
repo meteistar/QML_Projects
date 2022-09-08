@@ -1,37 +1,37 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.15
+import QtQuick 2.11
+import QtQuick.Window 2.11
+import QtQuick.Controls 2.4
 
-import controls 1.0
+import QtGraphicalEffects 1.0
 import utils 1.0
 
 ApplicationWindow {
-    width: 595
-    height: 840
     visible: true
+    width: 595
+    height: 842
     title: qsTr("QML Course")
 
-    ListModel{
+    ListModel {
         id: listModel
-        ListElement{url: "sheets/WidgetsSheet.qml"; text:"Basic Widgets"}
-        ListElement{url: "sheets/GridViewSheet.qml"; text:"Grid View"}
-        ListElement{url: "sheets/ListViewSheet.qml"; text:"List View"}
-        ListElement{url: "sheets/PathViewSheet.qml"; text:"Path View"}
-        ListElement{url: "sheets/WindmillSheet.qml"; text:"Windmill Animation"}
-        ListElement{url: "sheets/ParticlesSheet.qml"; text:"Particles"}
+        ListElement {url: "sheets/WidgetsSheet.qml" ; text: "Basic Widgets"}
+        ListElement {url: "sheets/ListViewSheet.qml" ; text: "List View"}
+        ListElement {url: "sheets/GridViewSheet.qml" ; text: "Grid View"}
+        ListElement {url: "sheets/PathViewSheet.qml" ; text: "Path View"}
+        ListElement {url: "sheets/WindmillSheet.qml" ; text: "Windmill Animation"}
+        ListElement {url: "sheets/ParticlesSheet.qml" ; text: "Particles"}
     }
 
-    header: Item{
+    header: Item {
         width: parent.width
         height: 30
 
-        Rectangle{
+        Rectangle {
             width: menuArea.width
-            height: parent.height//menuArea.height
+            height: parent.height
             color: Style.mainColor
         }
 
-        DropShadow{
+        DropShadow {
             anchors.fill: fillColorRect
             verticalOffset: 3
             radius: 8.0
@@ -40,61 +40,63 @@ ApplicationWindow {
             source: fillColorRect
         }
 
-        Rectangle{
+        Rectangle {
             id: fillColorRect
-            width: parent.width - menuArea.width
-            height:  parent.height
+            width: (parent.width - menuArea.width)
+            height: parent.height
             anchors.right: parent.right
             color: "white"
         }
-        Label{
+
+        Label {
             anchors.centerIn: parent
             text: listModel.get(listView.currentIndex).text
         }
     }
 
-    contentData: Item{
+    contentData: Item {
         anchors.fill: parent
 
-        Rectangle{
+        Rectangle {
             id: menuArea
             width: 185
             height: parent.height
             color: Style.mainColor
 
-            ListView{
+            ListView {
                 id: listView
                 anchors.fill: parent
                 anchors.topMargin: 50
                 model: listModel
                 interactive: false
                 spacing: 10
-                highlight: Item{
+                highlight: Item {
                     width: parent.width
                     height: 47
-                    Rectangle{
+                    Rectangle {
                         anchors.fill: parent
                         color: Style.bgColor
                         opacity: 0.6
                     }
-                    Rectangle{
+                    Rectangle {
                         width: 4
                         height: parent.height
-                        color: "#FFFFFF"
+                        color: "#fff"
                     }
                 }
-                delegate: Item{
+                delegate: Item {
                     width: parent.width
                     height: 47
-                    Text{
+                    Label {
                         anchors.centerIn: parent
+                        color: Style.fontContrastColor
                         text: model.text
-                        color: "#FFFFFF"
                     }
-                    MouseArea{
+                    MouseArea {
                         anchors.fill: parent
                         onClicked: {
                             listView.currentIndex = index;
+                            stackView.clear();
                             stackView.push(Qt.resolvedUrl(model.url));
                         }
                     }
@@ -102,50 +104,44 @@ ApplicationWindow {
             }
         }
 
-        StackView{
+        StackView {
             id: stackView
             width: parent.width - listView.width
             height: parent.height
             anchors.right: parent.right
             initialItem: Qt.resolvedUrl("sheets/WidgetsSheet.qml")
             popEnter: Transition {
-                PropertyAnimation{
+                PropertyAnimation {
                     property: "opacity"
                     from: 0
                     to:1
                     duration: 200
                 }
-
             }
             popExit: Transition {
-                PropertyAnimation{
+                PropertyAnimation {
                     property: "opacity"
                     from: 1
                     to:0
                     duration: 200
                 }
-
             }
             pushEnter: Transition {
-                PropertyAnimation{
+                PropertyAnimation {
                     property: "opacity"
                     from: 0
                     to:1
                     duration: 200
                 }
-
             }
             pushExit: Transition {
-                PropertyAnimation{
+                PropertyAnimation {
                     property: "opacity"
-                    from: 0
-                    to:1
+                    from: 1
+                    to:0
                     duration: 200
                 }
-
             }
         }
     }
-
-
 }

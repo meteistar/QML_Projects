@@ -6,31 +6,25 @@ Item {
     height: 40
 
     signal clicked()
-    property alias text: textLabel.text
+    property alias text: textElement.text
 
     Rectangle {
         anchors.fill: parent
         radius: 30
-        color: "#00D1A9"   
-    }
-
-    Rectangle{
-        anchors.fill: parent
-        radius: 30
-        color: "yellow"
-        visible: mouse.pressed
+        color: mouseArea.pressed ? "#A8A8A8" : "#00D1A9"
     }
 
     Text {
-        id: textLabel
-        font.pixelSize: 14
-        color: "gray"
+        id: textElement
         anchors.centerIn: parent
+        color: "#ffffff"
     }
 
-    MouseArea{
-        id: mouse
+    MouseArea {
+        id: mouseArea
         anchors.fill: parent
-        onClicked: root.clicked();
+        onClicked: {
+            root.clicked();
+        }
     }
 }

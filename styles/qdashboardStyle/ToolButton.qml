@@ -1,29 +1,41 @@
-import QtQuick 2.0
+import QtQuick 2.11
 import QtQuick.Templates 2.4 as T
+import QtGraphicalEffects 1.0
 
 import utils 1.0
 
 T.ToolButton {
     id: root
+
     implicitWidth: 140
     implicitHeight: 40
 
-    background: Item{
+    property bool colorize: true
+
+    background: Item {
         id: background
         anchors.fill: parent
-        Image{
+        Image {
             id: iconImg
-            source: icon.source
+            width: sourceSize.width
+            height: sourceSize.height
             anchors.verticalCenter: parent.verticalCenter
+            source: icon.source
+            ColorOverlay {
+                anchors.fill: parent
+                visible: root.colorize
+                source: parent
+                color: Style.mainColor
+            }
         }
     }
 
-    contentItem: Item{
+    contentItem: Item {
         width: (parent.width - iconImg.width)
         height: parent.height
         anchors.left: parent.left
-        anchors.leftMargin: (iconImg.width > 0) ? (iconImg.width+10) : 0
-        Label{
+        anchors.leftMargin: (iconImg.width > 0) ? (iconImg.width + 10) : 0
+        Label {
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
             text: root.text

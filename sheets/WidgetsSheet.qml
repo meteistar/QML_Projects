@@ -1,56 +1,62 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.15
-import QtGraphicalEffects 1.15
-//import controls 1.0
+import QtQuick 2.11
+import QtQuick.Controls 2.4
 import utils 1.0
 
 BaseSheet {
     id: root
 
-    Column{
-        anchors.horizontalCenter: parent.horizontalCenter
+    Column {
         anchors.top: parent.top
         anchors.topMargin: 30
+        anchors.horizontalCenter: parent.horizontalCenter
         spacing: 30
 
-        RadioButton{
-            id: myRadioButton
+        RadioButton {
             text: "Radio Button"
+            onCheckedChanged: {
+                console.log("radio on");
+            }
         }
 
-        CheckBox{
-            id: myCheckBox
+        CheckBox {
+            onCheckedChanged: {
+                if (checked) {
+                    console.log("check box checked");
+                } else {
+                    console.log("check box unchecked");
+                }
+            }
         }
 
-        Switch{
-            id: mySwitch
+        Switch {
             text: "Switch me!"
+            onCheckedChanged: {
+                if (checked) {
+                    console.log("switch button on");
+                } else {
+                    console.log("switch button off");
+                }
+            }
         }
 
-        Button{
-            id: myButton
-            text: "Click me !"
+        Button {
+            text: "Click Me!"
         }
 
-        ToolButton{
-            width: 120
+        ToolButton {
+            width: 180
             text: "Tool Button"
-            icon.source: Style.image("onoff")
+            icon.source: Style.image("header/onoff")
         }
 
-        Slider{
+        Slider { }
+
+        Label {
+            text: "I am a Label!"
         }
 
-        Label{
-            text: "I am a label"
-        }
+        BusyIndicator { }
 
-        BusyIndicator{
-
-        }
-
-        Dial{
-
-        }
+        Dial { }
     }
 }

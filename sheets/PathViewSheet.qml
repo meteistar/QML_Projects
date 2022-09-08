@@ -6,7 +6,7 @@ BaseSheet {
 
     PathView {
         anchors.fill: parent
-        model: Model { }
+        model: 100
         currentIndex: 0
 
         path: Path {
@@ -50,17 +50,9 @@ BaseSheet {
                 color: "black"
                 opacity: 0.2
             }
-            Column {
+            Text {
                 anchors.centerIn: dimming
-                Text {
-                    text: model.fruit
-                }
-                Text {
-                    width: parent.width
-                    font.pixelSize: 8
-                    horizontalAlignment: Text.AlignHCenter
-                    text: model.price
-                }
+                text: index
             }
         }
     }

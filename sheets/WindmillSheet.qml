@@ -1,13 +1,13 @@
-import QtQuick 2.7
+import QtQuick 2.11
 
 BaseSheet {
     id: root
 
-    Item{
+    Item {
         width: 200
         height: parent.height
         anchors.horizontalCenter: parent.horizontalCenter
-        Rectangle{
+        Rectangle {
             id: stick
             width: 10
             height: 250
@@ -16,19 +16,18 @@ BaseSheet {
             color: "black"
         }
 
-        Image{
+        Image {
             id: windmill
-            anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: stick.top
             anchors.bottomMargin: -width / 2
+            anchors.horizontalCenter: parent.horizontalCenter
             width: 200
             height: 200
-            source: "../assets/windmill.png"
-
-            RotationAnimator{
+            source: "../assets/sheets/windmill.png"
+            RotationAnimator {
                 target: windmill
-                to: 0
-                from: 360
+                from: 0
+                to: 360
                 duration: 1000
                 loops: Animation.Infinite
                 running: true
