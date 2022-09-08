@@ -7,13 +7,13 @@ import utils 1.0
 ItemDelegate {
     id: root
     width: parent.width
-    height: root.fullSize ? 100 : 95
+    height: root.fullSize ? 100 + (root.expand ? (mailContentItemLabel.contentHeight + 20) : 0) : 95
     Behavior on height { NumberAnimation { duration: 50 } }
 
     //TODO implement expand delegate
 
     enabled: root.fullSize
-
+    property bool expand: false
     property bool fullSize
 
     signal replyButtonClicked()
@@ -70,12 +70,12 @@ ItemDelegate {
                 Label {
                     //TODO implement support for expanding the delegate
                     id: mailContentItemLabel
-                    width: parent.width
-                    height: 14
+                    width: parent.width - 20
+                    height: root.expand ? contentHeight : 14
                     font.pixelSize: Style.fontSizeS
                     color: Style.fontSecondaryColor
-                    elide: Text.ElideRight
-                    wrapMode: Text.NoWrap
+                    elide: root.expand ? Text.ElideNone : Text.ElideRight
+                    wrapMode: root.expand ? Text.WordWrap : Text.NoWrap
                     text: content
                 }
             }
@@ -104,13 +104,17 @@ ItemDelegate {
                 width: 14
                 height: 14
                 anchors.centerIn: parent
-                visible: false
+                visible: (root.fullSize && (mailContentItemLabel.truncated || root.expand))
+                rotation: root.expand ? 180 : 0
+                Behavior on rotation {NumberAnimation{ duration: 300}}
                 source: Style.image("inbox/expand")
             }
         }
     }
     onClicked: {
         ListView.view.currentIndex = index;
-        //TODO expand mail if applicable
+        if(expandIcon.visible){
+            root.expand = !root.expand
+        }
     }
 }

@@ -65,7 +65,7 @@ Item {
             height: 26
             icon.source: Style.image("header/onoff")
             onClicked: {
-                //TODO quit app
+                Qt.quit();
             }
         }
     }

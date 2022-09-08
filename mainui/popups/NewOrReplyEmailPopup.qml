@@ -56,7 +56,7 @@ Popup {
                 anchors.rightMargin: 20
                 anchors.verticalCenter: parent.verticalCenter
                 icon.source: Style.image("controls/close");
-                onClicked: { }//TODO close popup
+                onClicked: { root.close();}
             }
             Image {
                 width: parent.width
@@ -111,11 +111,16 @@ Popup {
             enabled: (root.isReply || (!root.isReply && emailAddressTextInput.text !== ""))
             text: "Send"
             onClicked: {
-                //TODO close popup
+                root.close();
             }
         }
     }
     onClosed: {
-        //TODO reset
+        root.isReply = false;
+        emailAddressTextInput.text = "";
+        subjectTextInput.text = "";
+        root.subject = "";
+        root.sender = "";
+        contentTextField.text = "";
     }
 }

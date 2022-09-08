@@ -37,7 +37,7 @@ Item {
                 height: 40
                 text: "New"
                 onClicked: {
-                    //TODO openNewEmailPopup()
+                    UICommons.newOrReplyEmailPopup.open();
                 }
             }
         }

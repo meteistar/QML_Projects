@@ -44,7 +44,10 @@ BaseCard {
         delegate: InboxViewDelegate {
             fullSize: root.fullSize
             onReplyButtonClicked: {
-                //TODO openReplyPopup();
+                UICommons.newOrReplyEmailPopup.isReply = true;
+                UICommons.newOrReplyEmailPopup.sender = sender;
+                UICommons.newOrReplyEmailPopup.subject = subject;
+                UICommons.newOrReplyEmailPopup.open();
             }
         }
     }
