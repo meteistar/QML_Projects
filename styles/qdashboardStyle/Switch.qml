@@ -6,7 +6,7 @@ import utils 1.0
 T.Switch {
     id: root
     implicitWidth: 120
-    implicitHeight: 50
+    implicitHeight: 20
 
     background: Rectangle {
         id: background
