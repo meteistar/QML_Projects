@@ -11,7 +11,7 @@ import "../controls"
 BaseCard {
     id: root
     width: parent.width
-    height: root.fullSize ? (100 * listView.count + 50) : parent.height
+    height: root.fullSize ? Style.resize(100 * listView.count + 50) : parent.height
 
     property alias model: listView.model
     property bool fullSize: true
@@ -19,9 +19,9 @@ BaseCard {
     Label {
         id: tileLabel
         anchors.top: parent.top
-        anchors.topMargin: 20
+        anchors.topMargin: Style.resize(20)
         anchors.left: parent.left
-        anchors.leftMargin: 40
+        anchors.leftMargin: Style.resize(40)
         visible: !root.fullSize
         font.pixelSize: Style.fontSizeL
         font.family: Style.fontFamilyBold
@@ -30,19 +30,23 @@ BaseCard {
 
     ListView {
         id: listView
-        anchors.top: root.fullSize ?  parent.top : tileLabel.bottom
+        anchors.top: root.fullSize ? parent.top : tileLabel.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
+        interactive: false
         anchors {
-            leftMargin: 13
-            rightMargin: 13
-            topMargin: 13
-            bottomMargin: 23
+            leftMargin: Style.resize(13)
+            rightMargin: Style.resize(13)
+            topMargin: Style.resize(13)
+            bottomMargin: Style.resize(23)
         }
         clip: true
         delegate: InboxViewDelegate {
             fullSize: root.fullSize
+            onExpandChanged: {
+                listView.interactive = expand;
+            }
             onReplyButtonClicked: {
                 UICommons.newOrReplyEmailPopup.isReply = true;
                 UICommons.newOrReplyEmailPopup.sender = sender;

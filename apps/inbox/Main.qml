@@ -16,47 +16,76 @@ Item {
         id: emailsModels
     }
 
-    clip: true
-
-    Column {
+    Flickable {
         anchors.fill: parent
-        spacing: 20
+        contentHeight: root.fullSize ? mailsColumn.childrenRect.height : parent.height
+        interactive: root.fullSize
         clip: true
+        Column {
+            id: mailsColumn
+            anchors.fill: parent
+            spacing: Style.resize(20)
 
-        Row {
-            leftPadding: 60
-            spacing: 1400
-            visible: root.fullSize
-            Label {
-                font.pixelSize: Style.fontSizeL
-                font.family: Style.fontFamilyBold
-                text: "July"
-            }
-            Button {
-                width: 80
-                height: 40
-                text: "New"
-                onClicked: {
-                    UICommons.newOrReplyEmailPopup.open();
+            Row {
+                leftPadding: Style.resize(60)
+                spacing: Style.resize(1400)
+                visible: root.fullSize
+                Label {
+                    font.pixelSize: Style.fontSizeL
+                    font.family: Style.fontFamilyBold
+                    text: "July"
+                }
+                Button {
+                    width: Style.resize(80)
+                    height: Style.resize(40)
+                    text: "New"
+                    onClicked: {
+                        UICommons.newOrReplyEmailPopup.open();
+                    }
                 }
             }
-        }
-        InboxView {
-            model: emailsModels.julyMailsModel
-            fullSize: root.fullSize
-        }
+            InboxView {
+                model: emailsModels.julyMailsModel
+                fullSize: root.fullSize
+            }
 
-        Label {
-            visible: root.fullSize
-            leftPadding: 60
-            font.pixelSize: Style.fontSizeL
-            font.family: Style.fontFamilyBold
-            text: "June"
-        }
-        InboxView {
-            visible: root.fullSize
-            model: emailsModels.juneMailsModel
-            fullSize: root.fullSize
+            Label {
+                visible: root.fullSize
+                leftPadding: Style.resize(60)
+                font.pixelSize: Style.fontSizeL
+                font.family: Style.fontFamilyBold
+                text: "June"
+            }
+            InboxView {
+                visible: root.fullSize
+                model: emailsModels.juneMailsModel
+                fullSize: root.fullSize
+            }
+
+            Label {
+                visible: root.fullSize
+                leftPadding: Style.resize(60)
+                font.pixelSize: Style.fontSizeL
+                font.family: Style.fontFamilyBold
+                text: "May"
+            }
+            InboxView {
+                visible: root.fullSize
+                model: emailsModels.mayMailsModel
+                fullSize: root.fullSize
+            }
+            Label {
+                visible: root.fullSize
+                leftPadding: Style.resize(60)
+                font.pixelSize: Style.fontSizeL
+                font.family: Style.fontFamilyBold
+                text: "April"
+            }
+            InboxView {
+                visible: root.fullSize
+                model: emailsModels.aprilMailsModel
+                fullSize: root.fullSize
+            }
         }
     }
 }
