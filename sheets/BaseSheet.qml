@@ -1,5 +1,7 @@
 import QtQuick 2.0
 
+import utils 1.0
+
 Item {
     id: root
 
@@ -8,6 +10,6 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: "#D1DBE1"
+        color: Style.bgColor
     }
 }
