@@ -21,8 +21,8 @@ T.ToolButton {
     contentItem: Item{
         width: (parent.width - iconImg.width)
         height: parent.height
-        anchors.left: parent
-        anchors.leftMargin: iconImg.width>0 ? (iconImg.width) : 0
+        anchors.left: parent.left
+        anchors.leftMargin: (iconImg.width > 0) ? (iconImg.width+10) : 0
         Label{
             anchors.fill: parent
             verticalAlignment: Text.AlignVCenter
